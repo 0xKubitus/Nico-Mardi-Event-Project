@@ -1274,3 +1274,1519 @@ s://nico-events-project-mardi.herokuapp.com/.=0D
 
   [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
   ↳ db/seeds.rb:27
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE DATABASE "event_brite_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE DATABASE "event_brite_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (17.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "event_brite_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (17.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "event_brite_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (53.4ms)[0m  [1m[35mCREATE DATABASE "event_brite_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (56.7ms)[0m  [1m[35mCREATE DATABASE "event_brite_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "attendances" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "attendances" ("id" bigserial primary key, "attendee_id" bigint, "event_id" bigint, "stripe_customer_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE  INDEX  "index_attendances_on_attendee_id" ON "attendances"  ("attendee_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_attendances_on_event_id" ON "attendances"  ("event_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  ↳ db/schema.rb:28
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "start_date" timestamp, "duration" integer, "title" character varying, "description" text, "price" integer, "location" character varying, "admin_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:28
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_events_on_admin_id" ON "events"  ("admin_id")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:41
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "description" text, "first_name" character varying, "last_name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:41
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220516093511)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220516093447),
+(20220516093407);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-05-17 08:35:41.215085"], ["updated_at", "2022-05-17 08:35:41.215085"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "attendances" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "attendances" ("id" bigserial primary key, "attendee_id" bigint, "event_id" bigint, "stripe_customer_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE  INDEX  "index_attendances_on_attendee_id" ON "attendances"  ("attendee_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE  INDEX  "index_attendances_on_event_id" ON "attendances"  ("event_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  ↳ db/schema.rb:28
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "start_date" timestamp, "duration" integer, "title" character varying, "description" text, "price" integer, "location" character varying, "admin_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:28
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_events_on_admin_id" ON "events"  ("admin_id")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:41
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "description" text, "first_name" character varying, "last_name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:41
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220516093511)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220516093447),
+(20220516093407);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-05-17 08:35:41.269465"], ["updated_at", "2022-05-17 08:35:41.269465"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-05-17 08:35:41.271858"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mAttendance Load (0.2ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances"[0m
+  ↳ db/seeds.rb:9
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "description", "first_name", "last_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "nico-events-project@yopmail.com"], ["description", "Cet utilisateur a la description suivante: Generated description #65129"], ["first_name", "Weston"], ["last_name", "Borer"], ["created_at", "2022-05-17 08:35:41.451273"], ["updated_at", "2022-05-17 08:35:41.451273"]]
+  ↳ db/seeds.rb:15
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (0.3ms)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (0.1ms)
+UserMailer#welcome_email: processed outbound mail in 14.4ms
+Sent mail to nico-events-project@yopmail.com (14.2ms)
+Date: Tue, 17 May 2022 10:35:41 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project@yopmail.com
+Message-ID: <62835e5d72c56_5dfdebdc818ec@kubitus-PCmaison.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5d725dd_5dfdebdc817ae";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5d725dd_5dfdebdc817ae
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgV2VzdG9uIGV0IGJpZW52ZW51ZSBjaGV6IG5vdXMgIQ0KPT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PQ0KIA0KVHUgdCdlcyBpbnNjcml0IHN1ciBuaWNvLWV2ZW50cy1w
+cm9qZWN0LW1hcmRpIGVuIHV0aWxpc2FudCBsJ2UtbWFpbCBzdWl2YW50IDog
+bmljby1ldmVudHMtcHJvamVjdEB5b3BtYWlsLmNvbS4NCiANClBvdXIgYWNj
+w6lkZXIgw6AgdG9uIGVzcGFjZSBjbGllbnQsIGNvbm5lY3RlLXRvaSB2aWEg
+OiBodHRwczovL25pY28tZXZlbnRzLXByb2plY3QtbWFyZGkuaGVyb2t1YXBw
+LmNvbS8uDQogDQrDgCB0csOocyB2aXRlIHN1ciBuaWNvLWV2ZW50cy1wcm9q
+ZWN0LW1hcmRpICENCg==
+
+----==_mimepart_62835e5d725dd_5dfdebdc817ae
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Weston et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur nico-events-project-mardi en utilisant l'e-mail=
+ suivant : nico-events-project@yopmail.com.=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5d725dd_5dfdebdc817ae--
+
+  [1m[35m (4.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "description", "first_name", "last_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "nico-events-project1@yopmail.com"], ["description", "Cet utilisateur a la description suivante: Generated description #58415"], ["first_name", "Carlton"], ["last_name", "Crist"], ["created_at", "2022-05-17 08:35:41.488909"], ["updated_at", "2022-05-17 08:35:41.488909"]]
+  ↳ db/seeds.rb:15
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (0.0ms)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#welcome_email: processed outbound mail in 3.6ms
+Sent mail to nico-events-project1@yopmail.com (11.7ms)
+Date: Tue, 17 May 2022 10:35:41 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project1@yopmail.com
+Message-ID: <62835e5d78983_5dfdebdc8203d@kubitus-PCmaison.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5d78431_5dfdebdc81991";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5d78431_5dfdebdc81991
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgQ2FybHRvbiBldCBiaWVudmVudWUgY2hleiBub3VzICENCj09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT0NCiANClR1IHQnZXMgaW5zY3JpdCBzdXIgbmljby1ldmVudHMt
+cHJvamVjdC1tYXJkaSBlbiB1dGlsaXNhbnQgbCdlLW1haWwgc3VpdmFudCA6
+IG5pY28tZXZlbnRzLXByb2plY3QxQHlvcG1haWwuY29tLg0KIA0KUG91ciBh
+Y2PDqWRlciDDoCB0b24gZXNwYWNlIGNsaWVudCwgY29ubmVjdGUtdG9pIHZp
+YSA6IGh0dHBzOi8vbmljby1ldmVudHMtcHJvamVjdC1tYXJkaS5oZXJva3Vh
+cHAuY29tLy4NCiANCsOAIHRyw6hzIHZpdGUgc3VyIG5pY28tZXZlbnRzLXBy
+b2plY3QtbWFyZGkgIQ0K
+
+----==_mimepart_62835e5d78431_5dfdebdc81991
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Carlton et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur nico-events-project-mardi en utilisant l'e-mail=
+ suivant : nico-events-project1@yopmail.com.=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5d78431_5dfdebdc81991--
+
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "description", "first_name", "last_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "nico-events-project2@yopmail.com"], ["description", "Cet utilisateur a la description suivante: Generated description #50886"], ["first_name", "Savanna"], ["last_name", "Rohan"], ["created_at", "2022-05-17 08:35:41.507297"], ["updated_at", "2022-05-17 08:35:41.507297"]]
+  ↳ db/seeds.rb:15
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (0.0ms)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#welcome_email: processed outbound mail in 3.6ms
+Sent mail to nico-events-project2@yopmail.com (26.2ms)
+Date: Tue, 17 May 2022 10:35:41 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project2@yopmail.com
+Message-ID: <62835e5d7d0b6_5dfdebdc822a8@kubitus-PCmaison.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5d7cb6b_5dfdebdc821e5";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5d7cb6b_5dfdebdc821e5
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgU2F2YW5uYSBldCBiaWVudmVudWUgY2hleiBub3VzICENCj09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT0NCiANClR1IHQnZXMgaW5zY3JpdCBzdXIgbmljby1ldmVudHMt
+cHJvamVjdC1tYXJkaSBlbiB1dGlsaXNhbnQgbCdlLW1haWwgc3VpdmFudCA6
+IG5pY28tZXZlbnRzLXByb2plY3QyQHlvcG1haWwuY29tLg0KIA0KUG91ciBh
+Y2PDqWRlciDDoCB0b24gZXNwYWNlIGNsaWVudCwgY29ubmVjdGUtdG9pIHZp
+YSA6IGh0dHBzOi8vbmljby1ldmVudHMtcHJvamVjdC1tYXJkaS5oZXJva3Vh
+cHAuY29tLy4NCiANCsOAIHRyw6hzIHZpdGUgc3VyIG5pY28tZXZlbnRzLXBy
+b2plY3QtbWFyZGkgIQ0K
+
+----==_mimepart_62835e5d7cb6b_5dfdebdc821e5
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Savanna et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur nico-events-project-mardi en utilisant l'e-mail=
+ suivant : nico-events-project2@yopmail.com.=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5d7cb6b_5dfdebdc821e5--
+
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "description", "first_name", "last_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "nico-events-project3@yopmail.com"], ["description", "Cet utilisateur a la description suivante: Generated description #94872"], ["first_name", "Barrett"], ["last_name", "Hand"], ["created_at", "2022-05-17 08:35:41.540086"], ["updated_at", "2022-05-17 08:35:41.540086"]]
+  ↳ db/seeds.rb:15
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (0.0ms)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#welcome_email: processed outbound mail in 3.6ms
+Sent mail to nico-events-project3@yopmail.com (13.6ms)
+Date: Tue, 17 May 2022 10:35:41 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project3@yopmail.com
+Message-ID: <62835e5d85140_5dfdebdc8241c@kubitus-PCmaison.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5d84bc0_5dfdebdc823f4";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5d84bc0_5dfdebdc823f4
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgQmFycmV0dCBldCBiaWVudmVudWUgY2hleiBub3VzICENCj09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT0NCiANClR1IHQnZXMgaW5zY3JpdCBzdXIgbmljby1ldmVudHMt
+cHJvamVjdC1tYXJkaSBlbiB1dGlsaXNhbnQgbCdlLW1haWwgc3VpdmFudCA6
+IG5pY28tZXZlbnRzLXByb2plY3QzQHlvcG1haWwuY29tLg0KIA0KUG91ciBh
+Y2PDqWRlciDDoCB0b24gZXNwYWNlIGNsaWVudCwgY29ubmVjdGUtdG9pIHZp
+YSA6IGh0dHBzOi8vbmljby1ldmVudHMtcHJvamVjdC1tYXJkaS5oZXJva3Vh
+cHAuY29tLy4NCiANCsOAIHRyw6hzIHZpdGUgc3VyIG5pY28tZXZlbnRzLXBy
+b2plY3QtbWFyZGkgIQ0K
+
+----==_mimepart_62835e5d84bc0_5dfdebdc823f4
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Barrett et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur nico-events-project-mardi en utilisant l'e-mail=
+ suivant : nico-events-project3@yopmail.com.=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5d84bc0_5dfdebdc823f4--
+
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "description", "first_name", "last_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "nico-events-project4@yopmail.com"], ["description", "Cet utilisateur a la description suivante: Generated description #95304"], ["first_name", "Gus"], ["last_name", "Emard"], ["created_at", "2022-05-17 08:35:41.560655"], ["updated_at", "2022-05-17 08:35:41.560655"]]
+  ↳ db/seeds.rb:15
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (0.1ms)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#welcome_email: processed outbound mail in 4.0ms
+Sent mail to nico-events-project4@yopmail.com (13.4ms)
+Date: Tue, 17 May 2022 10:35:41 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project4@yopmail.com
+Message-ID: <62835e5d8a3c4_5dfdebdc82614@kubitus-PCmaison.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5d89e17_5dfdebdc82559";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5d89e17_5dfdebdc82559
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgR3VzIGV0IGJpZW52ZW51ZSBjaGV6IG5vdXMgIQ0KPT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PQ0KIA0KVHUgdCdlcyBpbnNjcml0IHN1ciBuaWNvLWV2ZW50cy1wcm9q
+ZWN0LW1hcmRpIGVuIHV0aWxpc2FudCBsJ2UtbWFpbCBzdWl2YW50IDogbmlj
+by1ldmVudHMtcHJvamVjdDRAeW9wbWFpbC5jb20uDQogDQpQb3VyIGFjY8Op
+ZGVyIMOgIHRvbiBlc3BhY2UgY2xpZW50LCBjb25uZWN0ZS10b2kgdmlhIDog
+aHR0cHM6Ly9uaWNvLWV2ZW50cy1wcm9qZWN0LW1hcmRpLmhlcm9rdWFwcC5j
+b20vLg0KIA0Kw4AgdHLDqHMgdml0ZSBzdXIgbmljby1ldmVudHMtcHJvamVj
+dC1tYXJkaSAhDQo=
+
+----==_mimepart_62835e5d89e17_5dfdebdc82559
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Gus et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur nico-events-project-mardi en utilisant l'e-mail=
+ suivant : nico-events-project4@yopmail.com.=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5d89e17_5dfdebdc82559--
+
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "description", "first_name", "last_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "nico-events-project5@yopmail.com"], ["description", "Cet utilisateur a la description suivante: Generated description #52870"], ["first_name", "Rich"], ["last_name", "Hartmann"], ["created_at", "2022-05-17 08:35:41.581639"], ["updated_at", "2022-05-17 08:35:41.581639"]]
+  ↳ db/seeds.rb:15
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (0.1ms)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#welcome_email: processed outbound mail in 4.1ms
+Sent mail to nico-events-project5@yopmail.com (14.4ms)
+Date: Tue, 17 May 2022 10:35:41 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project5@yopmail.com
+Message-ID: <62835e5d8f6b8_5dfdebdc828a6@kubitus-PCmaison.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5d8f065_5dfdebdc8275a";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5d8f065_5dfdebdc8275a
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgUmljaCBldCBiaWVudmVudWUgY2hleiBub3VzICENCj09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT0NCiANClR1IHQnZXMgaW5zY3JpdCBzdXIgbmljby1ldmVudHMtcHJv
+amVjdC1tYXJkaSBlbiB1dGlsaXNhbnQgbCdlLW1haWwgc3VpdmFudCA6IG5p
+Y28tZXZlbnRzLXByb2plY3Q1QHlvcG1haWwuY29tLg0KIA0KUG91ciBhY2PD
+qWRlciDDoCB0b24gZXNwYWNlIGNsaWVudCwgY29ubmVjdGUtdG9pIHZpYSA6
+IGh0dHBzOi8vbmljby1ldmVudHMtcHJvamVjdC1tYXJkaS5oZXJva3VhcHAu
+Y29tLy4NCiANCsOAIHRyw6hzIHZpdGUgc3VyIG5pY28tZXZlbnRzLXByb2pl
+Y3QtbWFyZGkgIQ0K
+
+----==_mimepart_62835e5d8f065_5dfdebdc8275a
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Rich et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur nico-events-project-mardi en utilisant l'e-mail=
+ suivant : nico-events-project5@yopmail.com.=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5d8f065_5dfdebdc8275a--
+
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mEvent Create (0.4ms)[0m  [1m[32mINSERT INTO "events" ("start_date", "duration", "title", "description", "price", "location", "admin_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["start_date", "2022-09-02 00:00:00"], ["duration", 230], ["title", "amateur radio"], ["description", "Cet evenement a la description aléatoire #1883"], ["price", 188], ["location", "Aronstad"], ["admin_id", 5], ["created_at", "2022-05-17 08:35:41.613150"], ["updated_at", "2022-05-17 08:35:41.613150"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("start_date", "duration", "title", "description", "price", "location", "admin_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["start_date", "2023-03-16 00:00:00"], ["duration", 595], ["title", "Tai chi"], ["description", "Cet evenement a la description aléatoire #9143"], ["price", 98], ["location", "North Rooseveltmouth"], ["admin_id", 5], ["created_at", "2022-05-17 08:35:41.617757"], ["updated_at", "2022-05-17 08:35:41.617757"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("start_date", "duration", "title", "description", "price", "location", "admin_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["start_date", "2022-08-21 00:00:00"], ["duration", 85], ["title", "Letterboxing"], ["description", "Cet evenement a la description aléatoire #3195"], ["price", 43], ["location", "Port Fairy"], ["admin_id", 2], ["created_at", "2022-05-17 08:35:41.620858"], ["updated_at", "2022-05-17 08:35:41.620858"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("start_date", "duration", "title", "description", "price", "location", "admin_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["start_date", "2022-11-28 00:00:00"], ["duration", 425], ["title", "Letterboxing"], ["description", "Cet evenement a la description aléatoire #2277"], ["price", 11], ["location", "South Mortonmouth"], ["admin_id", 6], ["created_at", "2022-05-17 08:35:41.624012"], ["updated_at", "2022-05-17 08:35:41.624012"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("start_date", "duration", "title", "description", "price", "location", "admin_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["start_date", "2022-12-13 00:00:00"], ["duration", 210], ["title", "amateur radio"], ["description", "Cet evenement a la description aléatoire #801"], ["price", 60], ["location", "New Aurore"], ["admin_id", 2], ["created_at", "2022-05-17 08:35:41.627143"], ["updated_at", "2022-05-17 08:35:41.627143"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ db/seeds.rb:24
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mAttendance Create (0.3ms)[0m  [1m[32mINSERT INTO "attendances" ("attendee_id", "event_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["attendee_id", 2], ["event_id", 1], ["created_at", "2022-05-17 08:35:41.635103"], ["updated_at", "2022-05-17 08:35:41.635103"]]
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/mailers/user_mailer.rb:19
+  Rendering user_mailer/admin_attend_email.html.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.html.erb within layouts/mailer (0.4ms)
+  Rendering user_mailer/admin_attend_email.text.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.text.erb within layouts/mailer (0.1ms)
+UserMailer#admin_attend_email: processed outbound mail in 7.3ms
+Sent mail to nico-events-project4@yopmail.com (15.9ms)
+Date: Tue, 17 May 2022 10:35:41 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project4@yopmail.com
+Message-ID: <62835e5d9d564_5dfdebdc83034@kubitus-PCmaison.mail>
+Subject: =?UTF-8?Q?Un_nouveau_participant_=C3=A0_ton_event_!?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5d9ce5d_5dfdebdc8294b";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5d9ce5d_5dfdebdc8294b
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5d9ce5d_5dfdebdc8294b
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Gus !</h1>=0D
+    <p>=0D
+      Nous te prevenons que Carlton Crist vient de s'inscrire =C3=A0 ton =
+=C3=A9v=C3=A8nement amateur radio. <br/>=0D
+      =0D
+      Voici quelques infos sur ce dernier : <br/>=0D
+      <br/>=0D
+      L'evenement aura lieu ici : Aronstad <br/>=0D
+      Il durera : 230 minutes <br/>=0D
+      Il devras raquer 188 euros sinon tu sors ! <br/>=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5d9ce5d_5dfdebdc8294b--
+
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mAttendance Create (0.4ms)[0m  [1m[32mINSERT INTO "attendances" ("attendee_id", "event_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["attendee_id", 1], ["event_id", 1], ["created_at", "2022-05-17 08:35:41.667271"], ["updated_at", "2022-05-17 08:35:41.667271"]]
+  ↳ db/seeds.rb:27
+  Rendering user_mailer/admin_attend_email.html.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.html.erb within layouts/mailer (0.1ms)
+  Rendering user_mailer/admin_attend_email.text.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#admin_attend_email: processed outbound mail in 6.1ms
+Sent mail to nico-events-project4@yopmail.com (22.5ms)
+Date: Tue, 17 May 2022 10:35:41 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project4@yopmail.com
+Message-ID: <62835e5da4f1a_5dfdebdc832c1@kubitus-PCmaison.mail>
+Subject: =?UTF-8?Q?Un_nouveau_participant_=C3=A0_ton_event_!?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5da4562_5dfdebdc83134";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5da4562_5dfdebdc83134
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5da4562_5dfdebdc83134
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Gus !</h1>=0D
+    <p>=0D
+      Nous te prevenons que Weston Borer vient de s'inscrire =C3=A0 ton =C3=
+=A9v=C3=A8nement amateur radio. <br/>=0D
+      =0D
+      Voici quelques infos sur ce dernier : <br/>=0D
+      <br/>=0D
+      L'evenement aura lieu ici : Aronstad <br/>=0D
+      Il durera : 230 minutes <br/>=0D
+      Il devras raquer 188 euros sinon tu sors ! <br/>=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5da4562_5dfdebdc83134--
+
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mAttendance Create (0.5ms)[0m  [1m[32mINSERT INTO "attendances" ("attendee_id", "event_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["attendee_id", 2], ["event_id", 2], ["created_at", "2022-05-17 08:35:41.709426"], ["updated_at", "2022-05-17 08:35:41.709426"]]
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/mailers/user_mailer.rb:19
+  Rendering user_mailer/admin_attend_email.html.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.html.erb within layouts/mailer (0.1ms)
+  Rendering user_mailer/admin_attend_email.text.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#admin_attend_email: processed outbound mail in 9.3ms
+Sent mail to nico-events-project4@yopmail.com (46.1ms)
+Date: Tue, 17 May 2022 10:35:41 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project4@yopmail.com
+Message-ID: <62835e5db0201_5dfdebdc834d2@kubitus-PCmaison.mail>
+Subject: =?UTF-8?Q?Un_nouveau_participant_=C3=A0_ton_event_!?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5daf8c9_5dfdebdc8336e";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5daf8c9_5dfdebdc8336e
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5daf8c9_5dfdebdc8336e
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Gus !</h1>=0D
+    <p>=0D
+      Nous te prevenons que Carlton Crist vient de s'inscrire =C3=A0 ton =
+=C3=A9v=C3=A8nement Tai chi. <br/>=0D
+      =0D
+      Voici quelques infos sur ce dernier : <br/>=0D
+      <br/>=0D
+      L'evenement aura lieu ici : North Rooseveltmouth <br/>=0D
+      Il durera : 595 minutes <br/>=0D
+      Il devras raquer 98 euros sinon tu sors ! <br/>=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5daf8c9_5dfdebdc8336e--
+
+  [1m[35m (4.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mAttendance Create (0.2ms)[0m  [1m[32mINSERT INTO "attendances" ("attendee_id", "event_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["attendee_id", 2], ["event_id", 2], ["created_at", "2022-05-17 08:35:41.772592"], ["updated_at", "2022-05-17 08:35:41.772592"]]
+  ↳ db/seeds.rb:27
+  Rendering user_mailer/admin_attend_email.html.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.html.erb within layouts/mailer (0.1ms)
+  Rendering user_mailer/admin_attend_email.text.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#admin_attend_email: processed outbound mail in 6.5ms
+Sent mail to nico-events-project4@yopmail.com (70.0ms)
+Date: Tue, 17 May 2022 10:35:41 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project4@yopmail.com
+Message-ID: <62835e5dbea0e_5dfdebdc83630@kubitus-PCmaison.mail>
+Subject: =?UTF-8?Q?Un_nouveau_participant_=C3=A0_ton_event_!?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5dbe2a0_5dfdebdc835d3";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5dbe2a0_5dfdebdc835d3
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5dbe2a0_5dfdebdc835d3
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Gus !</h1>=0D
+    <p>=0D
+      Nous te prevenons que Carlton Crist vient de s'inscrire =C3=A0 ton =
+=C3=A9v=C3=A8nement Tai chi. <br/>=0D
+      =0D
+      Voici quelques infos sur ce dernier : <br/>=0D
+      <br/>=0D
+      L'evenement aura lieu ici : North Rooseveltmouth <br/>=0D
+      Il durera : 595 minutes <br/>=0D
+      Il devras raquer 98 euros sinon tu sors ! <br/>=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5dbe2a0_5dfdebdc835d3--
+
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mAttendance Create (0.4ms)[0m  [1m[32mINSERT INTO "attendances" ("attendee_id", "event_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["attendee_id", 2], ["event_id", 3], ["created_at", "2022-05-17 08:35:41.855528"], ["updated_at", "2022-05-17 08:35:41.855528"]]
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/mailers/user_mailer.rb:19
+  Rendering user_mailer/admin_attend_email.html.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.html.erb within layouts/mailer (0.1ms)
+  Rendering user_mailer/admin_attend_email.text.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#admin_attend_email: processed outbound mail in 7.8ms
+Sent mail to nico-events-project1@yopmail.com (59.1ms)
+Date: Tue, 17 May 2022 10:35:41 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project1@yopmail.com
+Message-ID: <62835e5dd3a26_5dfdebdc83854@kubitus-PCmaison.mail>
+Subject: =?UTF-8?Q?Un_nouveau_participant_=C3=A0_ton_event_!?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5dd301c_5dfdebdc83735";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5dd301c_5dfdebdc83735
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5dd301c_5dfdebdc83735
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Carlton !</h1>=0D
+    <p>=0D
+      Nous te prevenons que Carlton Crist vient de s'inscrire =C3=A0 ton =
+=C3=A9v=C3=A8nement Letterboxing. <br/>=0D
+      =0D
+      Voici quelques infos sur ce dernier : <br/>=0D
+      <br/>=0D
+      L'evenement aura lieu ici : Port Fairy <br/>=0D
+      Il durera : 85 minutes <br/>=0D
+      Il devras raquer 43 euros sinon tu sors ! <br/>=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5dd301c_5dfdebdc83735--
+
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mAttendance Create (1.7ms)[0m  [1m[32mINSERT INTO "attendances" ("attendee_id", "event_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["attendee_id", 1], ["event_id", 3], ["created_at", "2022-05-17 08:35:41.931354"], ["updated_at", "2022-05-17 08:35:41.931354"]]
+  ↳ db/seeds.rb:27
+  Rendering user_mailer/admin_attend_email.html.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.html.erb within layouts/mailer (0.1ms)
+  Rendering user_mailer/admin_attend_email.text.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#admin_attend_email: processed outbound mail in 7.3ms
+Sent mail to nico-events-project1@yopmail.com (35.9ms)
+Date: Tue, 17 May 2022 10:35:41 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project1@yopmail.com
+Message-ID: <62835e5de621b_5dfdebdc84091@kubitus-PCmaison.mail>
+Subject: =?UTF-8?Q?Un_nouveau_participant_=C3=A0_ton_event_!?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5de57be_5dfdebdc8394";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5de57be_5dfdebdc8394
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5de57be_5dfdebdc8394
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Carlton !</h1>=0D
+    <p>=0D
+      Nous te prevenons que Weston Borer vient de s'inscrire =C3=A0 ton =C3=
+=A9v=C3=A8nement Letterboxing. <br/>=0D
+      =0D
+      Voici quelques infos sur ce dernier : <br/>=0D
+      <br/>=0D
+      L'evenement aura lieu ici : Port Fairy <br/>=0D
+      Il durera : 85 minutes <br/>=0D
+      Il devras raquer 43 euros sinon tu sors ! <br/>=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5de57be_5dfdebdc8394--
+
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mAttendance Create (0.3ms)[0m  [1m[32mINSERT INTO "attendances" ("attendee_id", "event_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["attendee_id", 1], ["event_id", 3], ["created_at", "2022-05-17 08:35:41.985662"], ["updated_at", "2022-05-17 08:35:41.985662"]]
+  ↳ db/seeds.rb:27
+  Rendering user_mailer/admin_attend_email.html.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.html.erb within layouts/mailer (0.1ms)
+  Rendering user_mailer/admin_attend_email.text.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#admin_attend_email: processed outbound mail in 6.1ms
+Sent mail to nico-events-project1@yopmail.com (58.5ms)
+Date: Tue, 17 May 2022 10:35:41 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project1@yopmail.com
+Message-ID: <62835e5df2b7c_5dfdebdc84263@kubitus-PCmaison.mail>
+Subject: =?UTF-8?Q?Un_nouveau_participant_=C3=A0_ton_event_!?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5df2221_5dfdebdc84130";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5df2221_5dfdebdc84130
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5df2221_5dfdebdc84130
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Carlton !</h1>=0D
+    <p>=0D
+      Nous te prevenons que Weston Borer vient de s'inscrire =C3=A0 ton =C3=
+=A9v=C3=A8nement Letterboxing. <br/>=0D
+      =0D
+      Voici quelques infos sur ce dernier : <br/>=0D
+      <br/>=0D
+      L'evenement aura lieu ici : Port Fairy <br/>=0D
+      Il durera : 85 minutes <br/>=0D
+      Il devras raquer 43 euros sinon tu sors ! <br/>=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5df2221_5dfdebdc84130--
+
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mAttendance Create (0.3ms)[0m  [1m[32mINSERT INTO "attendances" ("attendee_id", "event_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["attendee_id", 3], ["event_id", 4], ["created_at", "2022-05-17 08:35:42.056425"], ["updated_at", "2022-05-17 08:35:42.056425"]]
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/mailers/user_mailer.rb:19
+  Rendering user_mailer/admin_attend_email.html.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.html.erb within layouts/mailer (0.1ms)
+  Rendering user_mailer/admin_attend_email.text.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#admin_attend_email: processed outbound mail in 7.2ms
+Sent mail to nico-events-project5@yopmail.com (55.8ms)
+Date: Tue, 17 May 2022 10:35:42 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project5@yopmail.com
+Message-ID: <62835e5e1019f_5dfdebdc8448a@kubitus-PCmaison.mail>
+Subject: =?UTF-8?Q?Un_nouveau_participant_=C3=A0_ton_event_!?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5ef8ca_5dfdebdc84316";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5ef8ca_5dfdebdc84316
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5ef8ca_5dfdebdc84316
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Rich !</h1>=0D
+    <p>=0D
+      Nous te prevenons que Savanna Rohan vient de s'inscrire =C3=A0 ton =
+=C3=A9v=C3=A8nement Letterboxing. <br/>=0D
+      =0D
+      Voici quelques infos sur ce dernier : <br/>=0D
+      <br/>=0D
+      L'evenement aura lieu ici : South Mortonmouth <br/>=0D
+      Il durera : 425 minutes <br/>=0D
+      Il devras raquer 11 euros sinon tu sors ! <br/>=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5ef8ca_5dfdebdc84316--
+
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mAttendance Create (0.3ms)[0m  [1m[32mINSERT INTO "attendances" ("attendee_id", "event_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["attendee_id", 2], ["event_id", 4], ["created_at", "2022-05-17 08:35:42.124670"], ["updated_at", "2022-05-17 08:35:42.124670"]]
+  ↳ db/seeds.rb:27
+  Rendering user_mailer/admin_attend_email.html.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.html.erb within layouts/mailer (0.1ms)
+  Rendering user_mailer/admin_attend_email.text.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#admin_attend_email: processed outbound mail in 5.6ms
+Sent mail to nico-events-project5@yopmail.com (45.2ms)
+Date: Tue, 17 May 2022 10:35:42 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project5@yopmail.com
+Message-ID: <62835e5e20640_5dfdebdc84695@kubitus-PCmaison.mail>
+Subject: =?UTF-8?Q?Un_nouveau_participant_=C3=A0_ton_event_!?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5e1fd30_5dfdebdc845e";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5e1fd30_5dfdebdc845e
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5e1fd30_5dfdebdc845e
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Rich !</h1>=0D
+    <p>=0D
+      Nous te prevenons que Carlton Crist vient de s'inscrire =C3=A0 ton =
+=C3=A9v=C3=A8nement Letterboxing. <br/>=0D
+      =0D
+      Voici quelques infos sur ce dernier : <br/>=0D
+      <br/>=0D
+      L'evenement aura lieu ici : South Mortonmouth <br/>=0D
+      Il durera : 425 minutes <br/>=0D
+      Il devras raquer 11 euros sinon tu sors ! <br/>=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5e1fd30_5dfdebdc845e--
+
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mAttendance Create (0.3ms)[0m  [1m[32mINSERT INTO "attendances" ("attendee_id", "event_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["attendee_id", 1], ["event_id", 5], ["created_at", "2022-05-17 08:35:42.180160"], ["updated_at", "2022-05-17 08:35:42.180160"]]
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/mailers/user_mailer.rb:19
+  Rendering user_mailer/admin_attend_email.html.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.html.erb within layouts/mailer (0.1ms)
+  Rendering user_mailer/admin_attend_email.text.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#admin_attend_email: processed outbound mail in 9.1ms
+Sent mail to nico-events-project1@yopmail.com (32.2ms)
+Date: Tue, 17 May 2022 10:35:42 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project1@yopmail.com
+Message-ID: <62835e5e2ebc2_5dfdebdc8488b@kubitus-PCmaison.mail>
+Subject: =?UTF-8?Q?Un_nouveau_participant_=C3=A0_ton_event_!?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5e2e271_5dfdebdc847a2";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5e2e271_5dfdebdc847a2
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5e2e271_5dfdebdc847a2
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Carlton !</h1>=0D
+    <p>=0D
+      Nous te prevenons que Weston Borer vient de s'inscrire =C3=A0 ton =C3=
+=A9v=C3=A8nement amateur radio. <br/>=0D
+      =0D
+      Voici quelques infos sur ce dernier : <br/>=0D
+      <br/>=0D
+      L'evenement aura lieu ici : New Aurore <br/>=0D
+      Il durera : 210 minutes <br/>=0D
+      Il devras raquer 60 euros sinon tu sors ! <br/>=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5e2e271_5dfdebdc847a2--
+
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mAttendance Create (0.3ms)[0m  [1m[32mINSERT INTO "attendances" ("attendee_id", "event_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["attendee_id", 6], ["event_id", 5], ["created_at", "2022-05-17 08:35:42.227211"], ["updated_at", "2022-05-17 08:35:42.227211"]]
+  ↳ db/seeds.rb:27
+  Rendering user_mailer/admin_attend_email.html.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.html.erb within layouts/mailer (0.1ms)
+  Rendering user_mailer/admin_attend_email.text.erb within layouts/mailer
+  Rendered user_mailer/admin_attend_email.text.erb within layouts/mailer (0.0ms)
+UserMailer#admin_attend_email: processed outbound mail in 7.2ms
+Sent mail to nico-events-project1@yopmail.com (21.1ms)
+Date: Tue, 17 May 2022 10:35:42 +0200
+From: n.cubilier@gmail.com
+To: nico-events-project1@yopmail.com
+Message-ID: <62835e5e39d80_5dfdebdc850e1@kubitus-PCmaison.mail>
+Subject: =?UTF-8?Q?Un_nouveau_participant_=C3=A0_ton_event_!?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62835e5e3929e_5dfdebdc84919";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5e3929e_5dfdebdc84919
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62835e5e3929e_5dfdebdc84919
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Carlton !</h1>=0D
+    <p>=0D
+      Nous te prevenons que Rich Hartmann vient de s'inscrire =C3=A0 ton =
+=C3=A9v=C3=A8nement amateur radio. <br/>=0D
+      =0D
+      Voici quelques infos sur ce dernier : <br/>=0D
+      <br/>=0D
+      L'evenement aura lieu ici : New Aurore <br/>=0D
+      Il durera : 210 minutes <br/>=0D
+      Il devras raquer 60 euros sinon tu sors ! <br/>=0D
+    </p>=0D
+    <p>=0D
+      Pour acc=C3=A9der =C3=A0 ton espace client, connecte-toi via : http=
+s://nico-events-project-mardi.herokuapp.com/.=0D
+    </p>=0D
+    <p> =C3=80 tr=C3=A8s vite sur nico-events-project-mardi !=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_62835e5e3929e_5dfdebdc84919--
+
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
